@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
       this.offersData.push(
         {
           Heading: 'Gas container name change by Reliance',
-          Image: '../../assets/img/fake.PNG',
+          Image: 'assets/img/fake.PNG',
           Video: '',
           Description:
             'A video showing people labelling oxygen containers with  stickers of Reliance  is being shared on social media with a claim that these are oxygen tankers supplied to India',
@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
         },
         {
           Heading: 'Article 3',
-          Image: '../../assets/img/fake.PNG',
+          Image: 'assets/img/fake.PNG',
           Video: '',
           Description: 'Article 3',
           Validation: 'Fake',
