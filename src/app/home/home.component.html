@@ -1,37 +1,40 @@
 <div class="container">
-    <div class="card myg-card-shadow myg-card-rounded myg-card-bordered">
+  <div class="card myg-card-shadow myg-card-rounded myg-card-bordered mt-4" *ngFor="let item of offersData">
     <div class="card-body py-3">
-      <h4 class="card-title" >{{offersData[0].Heading}}</h4>
+      <h4 class="card-title">{{ item.Heading }}</h4>
       <div class="row">
         <div class="col-md-9">
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/v64KOxKVLVg" allowfullscreen ></iframe>
-         </div>
-         <section>
-            <div class="row justify-content-center">
-                <div class="col-auto">
-                   <h3> Description </h3>                  
-                    <p> {{offersData[0].Description}}
-                    </p>
-                    <p> Reference : 
-                        <a [attr.href]="offersData[0].Reference">
-                            {{offersData[0].Reference}}
-                           </a>
-                    </p>
-                </div> 
+          <ng-template [ngIf]="item.Video" [ngIfElse]="loading">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/v64KOxKVLVg"
+                allowfullscreen></iframe>
             </div>
-         </section> 
+           </ng-template>         
+         <ng-template #loading>
+          <img src="{{ item.Image }}" class="img-fluid"  alt="fake-image -1" />
+         </ng-template>
+          <section>
+            <div class="row justify-content-center">
+              <div class="col-auto">
+                <p>{{ item.Description }}</p>
+                <p> Reference : <a [attr.href]="item.Reference"> {{ item.Reference }} </a> </p>
+               </div>
+            </div>
+          </section>
         </div>
         <div class="col-md-3">
-            <a href="{{offersData[0].Reference}}">
-                <img src="{{offersData[0].Image}}" alt="fake-image" />
+          <ng-template [ngIf]="item.Validation === 'fake'">
+             <a href="{{ item.Reference }}">
+              <img src="assets/img/fake.PNG" class="img-fluid"  alt="fake-image-3" />
             </a>
+        </ng-template>         
+         <ng-template [ngIf]="item.Validation === 'real'">
+          <a href="{{ item.Reference }}">
+            <img src="assets/img/real.PNG" class="img-fluid"  alt="real-image-4" />
+          </a>
+       </ng-template>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-
-  
